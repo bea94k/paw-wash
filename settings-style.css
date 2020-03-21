@@ -1,0 +1,86 @@
+:root {
+  --background-color: #b2e8ff;
+  --light-color: #ffffff;
+  --dark-color: #145071;
+  --primary-color: #1683bf;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--dark-color);
+  font-family: "Fredoka One", cursive;
+  font-size: 36px;
+}
+
+.grid-wrap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /* grid-template-rows: repeat(6, 1fr); */
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header header header header header header header header close"
+    "remind remind remind remind remind remind remind remind remind remind remind remind"
+    "input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range"
+    ". add-worker add-worker add-worker add-worker . . rem-worker rem-worker rem-worker rem-worker ."
+    "add-name add-name add-input add-input add-input add-input rem-choose rem-choose rem-input rem-input rem-input rem-input"
+    "add-btn add-btn add-btn . . . . . . rem-btn rem-btn rem-btn";
+}
+
+h2 {
+  font-size: 47px;
+  letter-spacing: 2px;
+}
+
+.btn {
+  color: var(--light-color);
+  background: var(--primary-color);
+  font-family: "Fredoka One", cursive;
+  font-size: 36px;
+  border: none;
+  border-radius: 5px;
+  height: 85px;
+}
+
+i {
+  font-size: 72px;
+}
+
+.close-btn {
+  width: 85px;
+}
+
+/* HEADER - TITLE & CLOSE BTN */
+
+h2 {
+  grid-area: header;
+}
+
+#close-btn-settings {
+  grid-area: close;
+}
+
+.remind {
+  grid-area: remind;
+}
+
+input[type="range"] {
+  grid-area: input-range;
+}
+.add-worker {
+  grid-area: add-worker;
+}
+.rem-worker {
+  grid-area: rem-worker;
+}
+
+.name-add-worker {
+  grid-area: add-name;
+}
+
+input[type="text"] {
+  grid-area: add-input;
+}
+
+.name-rem-worker {
+  grid-area: rem-choose;
+}
