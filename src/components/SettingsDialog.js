@@ -7,6 +7,8 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Slider from '@material-ui/core/Slider'
+import Button from '@material-ui/core/Button'
+import Snackbar from '@material-ui/core/Snackbar'
 
 import { addUser, deleteUser, changeReminderInterval } from '../redux/washLog'
 
@@ -44,6 +46,7 @@ class SettingsDialog extends Component {
             open: false,
             username: '',
             deleteUser: '',
+            snackbarOpen: false
         }
     }
 
@@ -55,8 +58,14 @@ class SettingsDialog extends Component {
         this.setState({open: false})
     }
 
-    newUser() {
+    handleNewUser() {
         this.props.addUser(this.state.username)
+        this.setState({username: '', snackbarOpen: true})
+    }
+
+    handleDelete() {
+        this.props.deleteUser(this.state.deleteUser)
+        this.setState({deleteUser: ''})
     }
 
     setUsername(username) {
@@ -66,6 +75,14 @@ class SettingsDialog extends Component {
     changeInterval(interval) {
         this.props.changeReminderInterval(Number(interval) * 1000 * 60)
     }
+    
+    handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return
+        }
+
+        this.setState({snackbarOpen: false})
+    };
 
     render() {
         return (
@@ -103,12 +120,13 @@ class SettingsDialog extends Component {
                                 />
                             </div>
                             <div className="name-add-worker grid-center">Name:</div>
-                            <input onChange={(e) => this.setUsername(e.target.value)} type="text" className="input-add-worker grid-center" />
+                            <input value={this.state.username} onChange={(e) => this.setUsername(e.target.value)} type="text" className="input-add-worker grid-center" />
                             <div className="name-rem-worker grid-center">Choose:</div>
                             <input
                                 list="list-workers"
                                 name="list-workers"
                                 className="input-rem-worker grid-center"
+                                value={this.state.deleteUser}
                                 onChange={(e) => this.setState({ deleteUser: e.target.value })}
                             />
                             <datalist id="list-workers">
@@ -118,8 +136,25 @@ class SettingsDialog extends Component {
                                     })
                                 }
                             </datalist>
-                            <button onClick={() => this.newUser()} className="btn settings-action-btn add-worker-btn grid-center">Add user</button>
-                            <button onClick={() => this.props.deleteUser(this.state.deleteUser)} className="btn settings-action-btn rem-worker-btn grid-center">Remove user</button>
+                            <button onClick={() => this.handleNewUser()} className="btn settings-action-btn add-worker-btn grid-center">Add user</button>
+                            <button onClick={() => this.handleDelete()} className="btn settings-action-btn rem-worker-btn grid-center">Remove user</button>
+                            <Snackbar
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                open={this.state.snackbarOpen}
+                                autoHideDuration={6000}
+                                onClose={this.handleSnackClose}
+                                message="User added"
+                                action={
+                                    <React.Fragment>
+                                        <Button size="small" color="inherit" onClick={this.handleSnackClose}>
+                                            OK
+                                        </Button>
+                                    </React.Fragment>
+                                }
+                            />
                         </div>
                     </DialogContent>
                     <DialogActions>
