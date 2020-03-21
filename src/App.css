@@ -57,7 +57,7 @@ body {
   background: var(--background-color);
   color: var(--dark-color);
   font-family: "Fredoka One", cursive;
-  font-size: 20px;
+  font-size: 30px;
   height: 100vh;
   letter-spacing: 2px;
 }
@@ -97,8 +97,8 @@ i {
 /* Grid for the whole page, common features */
 
 .grid-wrap {
-  max-width: 1050px;
-  max-height: 800px;
+  max-width: 80vw;
+  max-height: 90vh;
   margin: 2rem auto 2rem;
   display: grid;
 }

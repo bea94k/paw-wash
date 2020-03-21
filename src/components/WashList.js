@@ -128,7 +128,7 @@ class WashList extends Component {
                     <div className="big-btn-grid">
                         <div>{users[this.state.selectedUser]} washed hands</div>
                         <i className="fas fa-sign-language"></i>
-                        <div className="bottom-of-button">Press the button with your elbow</div>
+                        <div>Press the button with your elbow</div>
                     </div>
                 </button>
 
@@ -136,7 +136,7 @@ class WashList extends Component {
                     <div className="big-btn-grid">
                         <div>Not you?</div>
                         <i className="fas fa-sync-alt"></i>
-                        <div className="bottom-of-button">Change worker</div>
+                        <div>Change worker</div>
                     </div>
                 </button>
 
