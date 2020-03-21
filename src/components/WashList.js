@@ -2,8 +2,28 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import * as R from 'ramda'
 
 import { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval } from '../redux/washLog'
+
+moment.updateLocale('en', {
+    relativeTime : {
+        future: 'in %s',
+        past:   'was %s ago',
+        s  : '%d seconds',
+        ss : '%d seconds',
+        m:  'a minute',
+        mm: '%d minutes',
+        h:  'an hour',
+        hh: '%d hours',
+        d:  'a day',
+        dd: '%d days',
+        M:  'a month',
+        MM: '%d months',
+        y:  'a year',
+        yy: '%d years'
+    }
+})
 
 class WashList extends Component {
     constructor(props) {
@@ -48,7 +68,7 @@ class WashList extends Component {
 
     render() {
         let { log, users, reminderInterval } = this.props
-
+        let now = moment()
         let interval = moment.duration(reminderInterval)
 
         return (
@@ -59,6 +79,21 @@ class WashList extends Component {
                 
                 <button onClick={() => this.newWash(this.state.selectedUser)}>{users[this.state.selectedUser]} washed hands. Press the button with your elbow</button>
                 <button onClick={() => this.changeUser()}>Not you? Change worker</button> 
+
+                <h2>Last washes</h2>
+                {
+                    users.map(user => {
+                        let entry = R.findLast(R.propEq('username', user))(log)
+                        let lastWash = 'no washes yet'
+                        let nextWash = 'wash your hands now!'
+                        if (entry) {
+                            lastWash = `last wash at ${moment(entry.time).from(now)}`
+                            nextWash = `next wash ${moment(entry.time).add(interval).from(now)}`
+                        }
+                        return <p key={user}>{user} - { lastWash } - { nextWash }</p>
+                    })
+                }
+
                 <h2>Log</h2>
                 {
                     log.map(entry => {
