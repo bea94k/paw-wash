@@ -28,18 +28,33 @@ body{
 }
 h4{
     color: var( --dark-color);
-    font-size: 2.5em;
-    text-align: center;
+    font-size: 2.5em; 
+    padding-left: 35rem;
+}
+.close {
+    background-color: var(--primary-color);
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    margin-top: 2rem;
+    
+}
+.one {
+    display: flex;
+    justify-content: space-around;
 }
 
-
+.fa-times{
+    color: #FFFFFF;
+    padding-left: 1.2rem;
+}
 /*Table*/
 
 .log {
     height: 600px;
     width: 1300px;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 1rem;
     border-collapse: collapse;
 }
 
