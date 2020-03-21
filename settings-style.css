@@ -10,20 +10,24 @@ body {
   color: var(--dark-color);
   font-family: "Fredoka One", cursive;
   font-size: 36px;
+  height: 100vh;
 }
 
 .grid-wrap {
+  max-width: 1050px;
+  max-height: 800px;
+  margin: 2rem auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  /* grid-template-rows: repeat(6, 1fr); */
-  grid-template-rows: auto;
+  grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
     "header header header header header header header header header header header close"
-    "remind remind remind remind remind remind remind remind remind remind remind remind"
+    "remind remind remind remind remind remind remind remind remind remind remind ."
     "input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range"
     ". add-worker add-worker add-worker add-worker . . rem-worker rem-worker rem-worker rem-worker ."
     "add-name add-name add-input add-input add-input add-input rem-choose rem-choose rem-input rem-input rem-input rem-input"
     "add-btn add-btn add-btn . . . . . . rem-btn rem-btn rem-btn";
+  grid-gap: 2rem;
 }
 
 h2 {
@@ -45,13 +49,25 @@ i {
   font-size: 72px;
 }
 
+input {
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  font-family: "Fredoka One", cursive;
+  font-size: 36px;
+}
+
 .close-btn {
   width: 85px;
 }
 
+.grid-center {
+  justify-self: center;
+  align-self: center;
+}
+
 /* HEADER - TITLE & CLOSE BTN */
 
-h2 {
+.heading {
   grid-area: header;
 }
 
@@ -59,28 +75,103 @@ h2 {
   grid-area: close;
 }
 
+/* REMINDER AND SLIDER */
+
 .remind {
   grid-area: remind;
 }
 
 input[type="range"] {
   grid-area: input-range;
+  height: 0.3rem;
+
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 90%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
 }
+
+/* thumb styling for Chrome */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid var(--dark-color);
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: var(--primary-color);
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+input[type="range"]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* thumb styling for Firefox */
+input[type="range"]::-moz-range-thumb {
+  border: 2px solid var(--dark-color);
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+/* thumb stylig for IE */
+input[type="range"]::-ms-thumb {
+  border: 2px solid var(--dark-color);
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+/* ADD WORKER title, label, input and button */
+
 .add-worker {
   grid-area: add-worker;
-}
-.rem-worker {
-  grid-area: rem-worker;
 }
 
 .name-add-worker {
   grid-area: add-name;
 }
 
-input[type="text"] {
+.input-add-worker {
   grid-area: add-input;
+  width: 90%;
+  padding: 5px;
+}
+
+.add-worker-btn {
+  grid-area: add-btn;
+}
+
+/* REMOVE WORKER title, label, input and button */
+
+.rem-worker {
+  grid-area: rem-worker;
 }
 
 .name-rem-worker {
   grid-area: rem-choose;
+}
+
+.input-rem-worker {
+  grid-area: rem-input;
+  width: 90%;
+  padding: 5px;
+}
+
+.rem-worker-btn {
+  grid-area: rem-btn;
 }
