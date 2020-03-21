@@ -47,7 +47,7 @@ class SettingsDialog extends Component {
         }
     }
 
-    handleClickOpen() {
+    handleClickOpen = () => {
         this.setState({open: true})
     }
 

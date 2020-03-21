@@ -7,6 +7,8 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import * as R from 'ramda'
 
+import { withStyles } from '@material-ui/styles'
+
 import SettingsDialog from './SettingsDialog'
 import LogDialog from './LogDialog'
 
@@ -29,6 +31,24 @@ moment.updateLocale('en', {
         y:  'a year',
         yy: '%d years'
     }
+})
+
+const styles = theme => ({
+    container: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(12, 1fr)',
+        gridGap: theme.spacing(3),
+    },
+    paper: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        whiteSpace: 'nowrap',
+        marginBottom: theme.spacing(1),
+    },
+    divider: {
+        margin: theme.spacing(2, 0),
+    },
 })
 
 class WashList extends Component {
@@ -177,7 +197,8 @@ WashList.propTypes = {
     log: PropTypes.array,
     users: PropTypes.array,
     reminderInterval: PropTypes.number,
-    addEntry: PropTypes.func
+    addEntry: PropTypes.func,
+    classes: PropTypes.object.isRequired,
 }
 
 export default connect(
@@ -187,4 +208,4 @@ export default connect(
         reminderInterval: state.reminderInterval,
     }),
     { addEntry },
-)(WashList)
+)(withStyles(styles)(WashList))
