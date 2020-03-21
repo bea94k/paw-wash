@@ -80,7 +80,12 @@ class SettingsDialog extends Component {
                     onClose={this.handleClose}
                     aria-labelledby="max-width-dialog-title"
                 >
-                    <DialogTitle id="max-width-dialog-title"><h2 className="heading">Settings</h2></DialogTitle>
+                    <DialogTitle id="max-width-dialog-title">
+                        <h2 className="heading">Settings</h2>
+                        <button onClick={this.handleClose} className="btn close-btn">
+                            <i className="fas fa-times"></i>
+                        </button>
+                    </DialogTitle>
                     <DialogContent>
                         <div className="grid-wrap grid-wrap-settings">
                             <div className="remind grid-center">Remind to wash hands every:</div>
@@ -97,8 +102,6 @@ class SettingsDialog extends Component {
                                     marks={marks}
                                 />
                             </div>
-                            <div className="add-worker grid-center">Add worker:</div>
-                            <div className="rem-worker grid-center">Remove worker:</div>
                             <div className="name-add-worker grid-center">Name:</div>
                             <input onChange={(e) => this.setUsername(e.target.value)} type="text" className="input-add-worker grid-center" />
                             <div className="name-rem-worker grid-center">Choose:</div>
@@ -115,14 +118,12 @@ class SettingsDialog extends Component {
                                     })
                                 }
                             </datalist>
-                            <button onClick={() => this.newUser()} className="btn add-worker-btn">Add</button>
-                            <button onClick={() => this.props.deleteUser(this.state.deleteUser)} className="btn rem-worker-btn">Remove</button>
+                            <button onClick={() => this.newUser()} className="btn settings-action-btn add-worker-btn grid-center">Add user</button>
+                            <button onClick={() => this.props.deleteUser(this.state.deleteUser)} className="btn settings-action-btn rem-worker-btn grid-center">Remove user</button>
                         </div>
                     </DialogContent>
                     <DialogActions>
-                        <button onClick={this.handleClose} className="btn close-btn" id="close-btn-settings">
-                            <i className="fas fa-times"></i>
-                        </button>
+
                     </DialogActions>
                 </Dialog>
             </React.Fragment>

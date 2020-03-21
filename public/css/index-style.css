@@ -15,6 +15,10 @@
   align-self: center;
 }
 
+.big-btn-grid div {
+  font-size: 36px;
+}
+
 /* Table */
 
 .table-titles {

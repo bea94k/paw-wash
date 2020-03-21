@@ -136,7 +136,7 @@ class WashList extends Component {
                     <div className="big-btn-grid">
                         <div>Not you?</div>
                         <i className="fas fa-sync-alt"></i>
-                        <div>Change worker</div>
+                        <div>Change user</div>
                     </div>
                 </button>
 
@@ -151,7 +151,7 @@ class WashList extends Component {
                     <table className="log-table table">
                         <thead>
                             <tr className="table-titles">
-                                <th>Worker</th>
+                                <th>User</th>
                                 <th>Last Hand Wash</th>
                                 <th>Next Hand Wash</th>
                             </tr>
@@ -165,8 +165,8 @@ class WashList extends Component {
                                     let lastWash = 'no washes yet'
                                     let nextWash = 'wash your hands now!'
                                     if (entry) {
-                                        lastWash = `last wash at ${moment(entry.time).from(this.state.now)}`
-                                        nextWash = `next wash ${moment(entry.time).add(interval).from(this.state.now)}`
+                                        lastWash = `${moment(entry.time).from(this.state.now)}`
+                                        nextWash = `${moment(entry.time).add(interval).from(this.state.now)}`
                                     }
                                     // return <p key={user}>{user} - { lastWash } - { nextWash }</p>
                                     return <tr className={i % 2 === 0 ? 'row row-primary-color' : 'row row-dark-color'} key={user}>

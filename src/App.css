@@ -71,10 +71,23 @@ h2 {
   color: var(--light-color);
   background: var(--primary-color);
   font-family: "Fredoka One", cursive;
-  font-size: 36px;
+  font-size: 30px;
   letter-spacing: 2px;
   border: none;
   border-radius: 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+a {
+  display: block;
+  width: 100%;
 }
 
 i {

@@ -7,6 +7,15 @@ input {
 
 .close-btn {
   width: 85px;
+  height: 85px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.max-width-dialog-title {
+  position: relative;
+  padding: 2px;
 }
 
 .grid-center {
@@ -18,16 +27,16 @@ input {
 
 .grid-wrap-settings {
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(5, auto);
   grid-template-areas:
-    "header header header header header header header header header header header header"
     "remind remind remind remind remind remind remind remind remind remind remind remind"
     "input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range"
     ". add-worker add-worker add-worker add-worker . . rem-worker rem-worker rem-worker rem-worker ."
     "add-name add-name add-input add-input add-input add-input rem-choose rem-choose rem-input rem-input rem-input rem-input"
-    "add-btn add-btn add-btn . . . . . . rem-btn rem-btn rem-btn";
-  grid-gap: 2rem;
+    ". . add-btn add-btn add-btn add-btn . . rem-btn rem-btn rem-btn rem-btn";
+  grid-gap: 1rem;
   position: relative;
+  margin: 0.5rem auto;
 }
 
 /* HEADER - TITLE & CLOSE BTN */
@@ -182,4 +191,10 @@ input[type="range"]::-ms-thumb {
 
 .rem-worker-btn {
   grid-area: rem-btn;
+}
+
+.settings-action-btn {
+  height: 57px;
+  font-size: 25px;
+  width: 90%;
 }

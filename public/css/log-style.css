@@ -1,10 +1,9 @@
 /* Grid of the whole page */
 
 .grid-wrap-log {
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-template-columns: 1fr 1fr 1fr auto 1fr 1fr 1fr;
   grid-template-areas:
-    ". . . title . . ."
     "table table table table table table table"
     "clear-btn clear-btn . . . report-btn report-btn";
   grid-gap: 2rem;
@@ -25,6 +24,7 @@
 
 h2 {
   grid-area: title;
+  text-align: center;
 }
 
 .log {
@@ -33,10 +33,12 @@ h2 {
 
 .clear-btn {
   grid-area: clear-btn;
+  height: 57px;
 }
 
 .report-btn {
   grid-area: report-btn;
+  height: 57px;
 }
 
 /*Table*/
@@ -45,6 +47,11 @@ h2 {
   height: 100%;
   width: 100%;
   border-collapse: collapse;
+  color: #fff;
+}
+
+.log i {
+  font-size: 40px;
 }
 
 tr {
@@ -67,7 +74,7 @@ tr {
   border-left: 2px solid var(--dark-color);
 }
 th {
-  padding: 1.5rem;
+  padding: 0.8rem;
   color: #ffffff;
   font-size: 1.3em;
 }
