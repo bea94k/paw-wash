@@ -27,6 +27,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    justify-items: center;
 }
 
 .hands-washed-btn {
@@ -45,7 +46,7 @@ body {
 #options .container {
 display: flex;
 flex-direction: column;
-align-items: flex-end;
+align-items: center;
 }
 
 #options .button {
@@ -55,7 +56,6 @@ align-items: center;
 height: 130px;
 width: 130px;
 }
-
 
 /* Main Menu & Options Buttons */
 
@@ -78,7 +78,6 @@ width: 130px;
 
 .table-titles {
     background: var(--dark-color);
-    text-align: center;
     padding: 20px 0 20px 0;
 }
 
@@ -95,5 +94,5 @@ table,
 th,
 td {
     border-collapse: collapse;
-    border-right: 3px solid var(--dark-color);
+    border-right: 3px solid var(--border-color);
 }
