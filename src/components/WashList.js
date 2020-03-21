@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ReactNotifications from 'react-browser-notifications'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import * as R from 'ramda'
@@ -29,11 +30,39 @@ class WashList extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            now: moment(),
             username: '',
             deleteUser: '',
+            lastNotification: moment(),
             selectedUser: 0,
-            error: ''
+            error: '',
+            play: false,
+            audio: new Audio('/sounds/when.mp3')
         }
+        this.state.audio.addEventListener('ended', () => this.setState({ play: false }))
+        setInterval(this.setNewTime, 5000) // call the new time regularly
+    }
+    
+    setNewTime = () => {
+        this.setState({ now: moment() });
+    }
+
+    togglePlay = () => { // play sound
+        if (!this.state.play) {
+            this.setState({ play: !this.state.play }, () => {
+                this.state.play ? this.state.audio.play() : this.state.audio.pause()
+            })
+        }
+    }
+
+    showNotifications() {
+        this.togglePlay()
+        if(this.n.supported()) this.n.show()
+    }
+
+    handleClick(event) { // handle the notification click
+        window.focus() // change to the tab if somewhere else
+        this.n.close(event.target.tag); // close the notification
     }
 
     newWash(userIndex) {
@@ -66,16 +95,33 @@ class WashList extends Component {
         }
     }
 
+    // The componentDidUpdate method is called after the component is updated in the DOM.
+    componentDidUpdate() {
+        let interval = moment.duration(this.props.reminderInterval)
+        if (moment(this.state.lastNotification).add(interval).isBefore(this.state.now)) {
+            this.showNotifications() // show notification at specified intervals
+            this.setState({ lastNotification: moment() })
+        }
+    }
+
     render() {
         let { log, users, reminderInterval } = this.props
-        let now = moment()
         let interval = moment.duration(reminderInterval)
 
         return (
             <div>
+                <ReactNotifications
+                    onRef={ref => (this.n = ref)} // Required
+                    title="PaWash Reminder" // Required
+                    body={'Time to wash hands!'}
+                    icon="/logo192.png"
+                    tag="hands"
+                    timeout="5000"
+                    onClick={(event) => this.handleClick(event)}
+                />
                 
                 <h1>Main Page</h1>
-                <p>Currently giving reminders every {interval.hours()} hours and { + interval.minutes()} minutes </p>
+                <p>Currently giving reminders every {interval.hours()} hours and {interval.minutes()} minutes </p>
                 
                 <button onClick={() => this.newWash(this.state.selectedUser)}>{users[this.state.selectedUser]} washed hands. Press the button with your elbow</button>
                 <button onClick={() => this.changeUser()}>Not you? Change worker</button> 
@@ -87,8 +133,8 @@ class WashList extends Component {
                         let lastWash = 'no washes yet'
                         let nextWash = 'wash your hands now!'
                         if (entry) {
-                            lastWash = `last wash at ${moment(entry.time).from(now)}`
-                            nextWash = `next wash ${moment(entry.time).add(interval).from(now)}`
+                            lastWash = `last wash at ${moment(entry.time).from(this.state.now)}`
+                            nextWash = `next wash ${moment(entry.time).add(interval).from(this.state.now)}`
                         }
                         return <p key={user}>{user} - { lastWash } - { nextWash }</p>
                     })
