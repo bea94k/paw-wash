@@ -4,6 +4,7 @@
 --light-color: #FFFFFF;
 --dark-color: #145071;
 --primary-color: #1683BF;
+--border-color: #154560;
 }
 
 body {
@@ -12,6 +13,27 @@ body {
     color: var(--light-color);
 }
 
+/* Main menu */
+
+#main-menu-index .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hands-washed-btn {
+    width: 400px;
+    height: 400px;
+}
+
+.change-users-btn {
+    height: 400px;
+    width: 242px;
+}
+
+
+/* Options */
+
 
 #options .container {
 display: flex;
@@ -19,20 +41,24 @@ justify-content: center;
 align-items: flex-end;
 }
 
-.options {
-background: var(--dark-color);
-color: var(--light-color);
+#options .button {
 height: 130px;
 width: 130px;
-padding: 1rem;
-margin: 1rem;
 }
 
-.fa-stack 
-{
-    position: relative;
-    top: 1rem;
-  }
+
+/* Main Menu & Options Buttons */
+
+.button {
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+
+/* Table */
 
 .log {
     height: 220px;
@@ -41,6 +67,8 @@ margin: 1rem;
 
 .table-titles {
     background: var(--dark-color);
+    text-align: center;
+    padding: 20px 0 20px 0;
 }
 
 .row-dark-color {
@@ -57,5 +85,5 @@ thead,
 tr,
 td {
     border-collapse: collapse;
-    border-right: 5px solid var(--dark-color);
+    border-right: 3px solid var(--border-color);
 }
