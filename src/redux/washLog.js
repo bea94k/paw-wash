@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
     case ADD_LOG_ENTRY:
         return {
             ...state,
-            log: R.append({id: uuid(), time: now, username: action.username}, state.log) // push new entry to the log array of the user
+            log: R.append({id: uuid(), time: now, username: state.users[action.userIndex]}, state.log) // push new entry to the log array of the user
         }
 
     case REMOVE_LOG_ENTRY:
@@ -58,9 +58,9 @@ export const deleteUser = (username) => ({
     username: username
 })
 
-export const addEntry = (username) => ({
+export const addEntry = (userIndex) => ({
     type: ADD_LOG_ENTRY,
-    username: username
+    userIndex: userIndex
 })
 
 export const deleteEntry = (id) => ({
