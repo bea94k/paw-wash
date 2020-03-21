@@ -13,23 +13,6 @@ body {
   height: 100vh;
 }
 
-.grid-wrap {
-  max-width: 1050px;
-  max-height: 800px;
-  margin: 2rem auto;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-template-areas:
-    "header header header header header header header header header header header close"
-    "remind remind remind remind remind remind remind remind remind remind remind ."
-    "input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range"
-    ". add-worker add-worker add-worker add-worker . . rem-worker rem-worker rem-worker rem-worker ."
-    "add-name add-name add-input add-input add-input add-input rem-choose rem-choose rem-input rem-input rem-input rem-input"
-    "add-btn add-btn add-btn . . . . . . rem-btn rem-btn rem-btn";
-  grid-gap: 2rem;
-}
-
 h2 {
   font-size: 47px;
   letter-spacing: 2px;
@@ -65,6 +48,26 @@ input {
   align-self: center;
 }
 
+/*  GRID OF THE WHOLE PAGE */
+
+.grid-wrap {
+  max-width: 1050px;
+  max-height: 800px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "header header header header header header header header header header header header"
+    "remind remind remind remind remind remind remind remind remind remind remind remind"
+    "input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range input-range"
+    ". add-worker add-worker add-worker add-worker . . rem-worker rem-worker rem-worker rem-worker ."
+    "add-name add-name add-input add-input add-input add-input rem-choose rem-choose rem-input rem-input rem-input rem-input"
+    "add-btn add-btn add-btn . . . . . . rem-btn rem-btn rem-btn";
+  grid-gap: 2rem;
+  position: relative;
+}
+
 /* HEADER - TITLE & CLOSE BTN */
 
 .heading {
@@ -72,7 +75,10 @@ input {
 }
 
 #close-btn-settings {
-  grid-area: close;
+  /* grid-area: close; */
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /* REMINDER AND SLIDER */
@@ -81,8 +87,16 @@ input {
   grid-area: remind;
 }
 
-input[type="range"] {
+.remind-slider {
   grid-area: input-range;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+}
+
+input[type="range"] {
+  grid-column: 1 / span 12;
+  grid-row: 1 / span 1;
   height: 0.3rem;
 
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
@@ -134,6 +148,39 @@ input[type="range"]::-ms-thumb {
   border-radius: 3px;
   background: var(--primary-color);
   cursor: pointer;
+}
+
+/* slider time descriptions */
+
+.slider-descr {
+  display: grid;
+  width: 97%;
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 2rem;
+}
+
+.slider-descr div {
+  text-align: center;
+}
+
+.time5 {
+  grid-column-start: 1;
+}
+
+.time15 {
+  grid-column-start: 3;
+}
+
+.time30 {
+  grid-column-start: 6;
+}
+
+.time45 {
+  grid-column-start: 9;
+}
+
+.time60 {
+  grid-column-start: 12;
 }
 
 /* ADD WORKER title, label, input and button */

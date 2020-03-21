@@ -22,7 +22,23 @@
           <i class="fas fa-times"></i>
         </button>
         <div class="remind grid-center">Remind to wash hands every:</div>
-        <input type="range" class="grid-center" />
+        <div class="remind-slider grid-center">
+          <input
+            type="range"
+            class="grid-center"
+            min="5"
+            max="60"
+            value="15"
+            step="5"
+          />
+          <div class="slider-descr grid-center">
+            <div class="time5">5 min</div>
+            <div class="time15">15 min</div>
+            <div class="time30">30 min</div>
+            <div class="time45">45 min</div>
+            <div class="time60">60 min</div>
+          </div>
+        </div>
         <div class="add-worker grid-center">Add worker:</div>
         <div class="rem-worker grid-center">Remove worker:</div>
         <div class="name-add-worker grid-center">Name:</div>
