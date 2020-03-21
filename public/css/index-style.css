@@ -48,7 +48,7 @@ td {
 
 /* Grid of the whole page */
 
-.grid-wrap {
+.grid-wrap-index {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(8, 1fr);
   grid-template-areas:
@@ -60,7 +60,7 @@ td {
     "wash-table wash-table wash-table wash-table wash-table log-btn"
     "wash-table wash-table wash-table wash-table wash-table settings-btn"
     "wash-table wash-table wash-table wash-table wash-table settings-btn";
-  grid-gap: 4rem;
+  grid-gap: 2rem;
   position: relative;
 }
 

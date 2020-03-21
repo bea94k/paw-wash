@@ -16,7 +16,7 @@ input {
 
 /*  GRID OF THE WHOLE PAGE */
 
-.grid-wrap {
+.grid-wrap-settings {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
@@ -38,7 +38,6 @@ input {
 
 #close-btn-settings {
   /* grid-area: close; */
-  position: absolute;
   top: 0;
   right: 0;
 }

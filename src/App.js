@@ -5,14 +5,7 @@ import WashList from './components/WashList'
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    Paw Wash
-                </p>
-            </header>
-            <WashList />
-        </div>
+        <WashList />
     )
 }
 
