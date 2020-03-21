@@ -1,4 +1,12 @@
 /* Whole site */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 :root {
 --background-color: #B2E8FF;
 --light-color: #FFFFFF;
@@ -17,7 +25,7 @@ body {
 
 #main-menu-index .container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
@@ -34,14 +42,16 @@ body {
 
 /* Options */
 
-
 #options .container {
 display: flex;
-justify-content: center;
+flex-direction: column;
 align-items: flex-end;
 }
 
 #options .button {
+display: flex;
+justify-content: center;
+align-items: center;
 height: 130px;
 width: 130px;
 }
@@ -63,6 +73,7 @@ width: 130px;
 .log {
     height: 220px;
     width: 770px;
+    text-align: center;
 }
 
 .table-titles {
@@ -81,9 +92,8 @@ width: 130px;
 }
 
 table,
-thead,
-tr,
+th,
 td {
     border-collapse: collapse;
-    border-right: 3px solid var(--border-color);
+    border-right: 3px solid var(--dark-color);
 }
