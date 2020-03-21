@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
-import { addEntry, addUser, deleteUser, deleteEntry } from '../redux/washLog'
+import { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval } from '../redux/washLog'
 
 class WashList extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class WashList extends Component {
         this.state = {
             username: '',
             deleteUser: '',
-            selectedUser: 0
+            selectedUser: 0,
+            error: ''
         }
     }
 
@@ -33,13 +35,27 @@ class WashList extends Component {
         }
     }
 
+    changeInterval(interval) {
+        if (interval > 86400000) {
+            this.setState({error: 'Wash your hands at least once per day'})
+        } else if (interval < 60000) {
+            this.setState({error: 'You are washing your hands too much and wasting water'})
+        } else {
+            this.setState({error: ''})
+            this.props.changeReminderInterval(interval)
+        }
+    }
+
     render() {
-        let { log, users } = this.props
+        let { log, users, reminderInterval } = this.props
+
+        let interval = moment.duration(reminderInterval)
 
         return (
             <div>
                 
                 <h1>Main Page</h1>
+                <p>Currently giving reminders every {interval.hours()} hours and { + interval.minutes()} minutes </p>
                 
                 <button onClick={() => this.newWash(this.state.selectedUser)}>{users[this.state.selectedUser]} washed hands. Press the button with your elbow</button>
                 <button onClick={() => this.changeUser()}>Not you? Change worker</button> 
@@ -58,6 +74,12 @@ class WashList extends Component {
 
                 <h2>Settings</h2>
 
+                <p>Reminder interval</p>
+                <input id='reminderInterval' onChange={(e) => this.changeInterval(e.target.value)} />ms
+                <p>{this.state.error}</p>
+                
+                <br/><br/>
+
                 <input id='username' onChange={(e) => this.setState({username: e.target.value})} />
                 <button onClick={() => this.newUser(this.state.username)}>Add User</button> 
 
@@ -73,16 +95,19 @@ class WashList extends Component {
 WashList.propTypes = {
     log: PropTypes.array,
     users: PropTypes.array,
+    reminderInterval: PropTypes.number,
     addEntry: PropTypes.func,
     addUser: PropTypes.func,
     deleteUser: PropTypes.func,
-    deleteEntry: PropTypes.func
+    deleteEntry: PropTypes.func,
+    changeReminderInterval: PropTypes.func
 }
 
 export default connect(
     (state) => ({
         log: state.log,
         users: state.users,
+        reminderInterval: state.reminderInterval,
     }),
-    { addEntry, addUser, deleteUser, deleteEntry },
+    { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval },
 )(WashList)

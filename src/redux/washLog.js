@@ -4,7 +4,8 @@ import { v4 as uuid } from 'uuid'
 
 const initialState = {
     log: [],
-    users: []
+    users: [],
+    reminderInterval: 900000 // default reminder interval 15 minutes
 }
 
 // Actions
@@ -12,6 +13,7 @@ const CREATE_USER = 'users/CREATE'
 const REMOVE_USER = 'users/DELETE'
 const ADD_LOG_ENTRY = 'log/CREATE'
 const REMOVE_LOG_ENTRY = 'log/DELETE'
+const CHANGE_REMINDER_INTERVAL = 'reminderInterval/CHANGE'
 
 // Reducer
 export default (state = initialState, action) => {
@@ -41,6 +43,12 @@ export default (state = initialState, action) => {
             ...state,
             log: R.filter(entry => entry.id !== action.id, state.log) // filter out the id of the log entry for the given user
         }
+    
+    case CHANGE_REMINDER_INTERVAL:
+        return {
+            ...state,
+            reminderInterval: Number.isInteger(Number(action.newInterval)) ? Number(action.newInterval) : initialState.reminderInterval
+        }
 
     default:
         return state
@@ -66,4 +74,9 @@ export const addEntry = (userIndex) => ({
 export const deleteEntry = (id) => ({
     type: REMOVE_LOG_ENTRY,
     id: id
+})
+
+export const changeReminderInterval = (newInterval) => ({
+    type: CHANGE_REMINDER_INTERVAL,
+    newInterval: newInterval
 })
