@@ -67,6 +67,14 @@ width: 130px;
     margin: 1rem;
 }
 
+#main-menu-index i {
+    font-size: 8rem;
+    margin: 3rem 0 3rem 0;
+}
+
+#options i {
+    font-size: 50px;
+}
 
 /* Table */
 
@@ -78,7 +86,11 @@ width: 130px;
 
 .table-titles {
     background: var(--dark-color);
-    padding: 20px 0 20px 0;
+}
+
+th {
+    padding-bottom: 5px;
+
 }
 
 .row-dark-color {
@@ -95,4 +107,9 @@ th,
 td {
     border-collapse: collapse;
     border-right: 3px solid var(--border-color);
+}
+
+:last-of-type{
+    border-collapse: collapse;
+    border-right: none;
 }
