@@ -1,0 +1,98 @@
+/* Whole site */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+--background-color: #B2E8FF;
+--light-color: #FFFFFF;
+--dark-color: #145071;
+--primary-color: #1683BF;
+--border-color: #154560;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: var(--background-color);
+    color: var(--light-color);
+}
+
+/* Main menu */
+
+#main-menu-index .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    justify-items: center;
+}
+
+.hands-washed-btn {
+    width: 400px;
+    height: 400px;
+}
+
+.change-users-btn {
+    height: 400px;
+    width: 242px;
+}
+
+
+/* Options */
+
+#options .container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#options .button {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 130px;
+width: 130px;
+}
+
+/* Main Menu & Options Buttons */
+
+.button {
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+
+/* Table */
+
+.log {
+    height: 220px;
+    width: 770px;
+    text-align: center;
+}
+
+.table-titles {
+    background: var(--dark-color);
+    padding: 20px 0 20px 0;
+}
+
+.row-dark-color {
+    background: var(--dark-color);
+    opacity: 50%;
+}
+
+.row-primary-color {
+    background: var(--primary-color);
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border-right: 3px solid var(--border-color);
+}
