@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ReactNotifications from 'react-browser-notifications'
+import fileDownload from 'js-file-download';
+import papa from 'papaparse'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import * as R from 'ramda'
@@ -71,6 +73,12 @@ class WashList extends Component {
 
     newUser(username) {
         this.props.addUser(username)
+    }
+
+    download() {
+        let { log } = this.props
+        let trimmedLog = log.map(entry => R.pick(['username', 'time'], entry))
+        fileDownload(papa.unparse(trimmedLog), moment().format('YYYY-MM-DD') + '-wash-log.csv')
     }
 
     changeUser() {
@@ -146,6 +154,8 @@ class WashList extends Component {
                         return <p key={entry.id}>{entry.username} washed hands at {entry.time} <button onClick={() => this.props.deleteEntry(entry.id)}>Delete</button></p>
                     })
                 }
+
+                <button onClick={() => this.download()}>Download Log</button> 
                 <h2>Users</h2>
                 {
                     users.map(user => {
