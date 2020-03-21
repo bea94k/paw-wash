@@ -1,0 +1,66 @@
+/* Grid of the whole page */
+
+.grid-wrap {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas: ;
+  grid-gap: 2rem;
+}
+
+.clear-btn,
+.report-btn {
+  background-color: #1683bf;
+  color: #ffffff;
+  font-family: "Fredoka One", cursive;
+  width: 220px;
+  height: 90px;
+  font-size: 2em;
+  border-radius: 5px;
+  border: none;
+  margin-top: 3rem;
+}
+
+/*Table*/
+
+.log {
+  height: 600px;
+  width: 1300px;
+  margin: auto;
+  margin-top: 5rem;
+  border-collapse: collapse;
+}
+
+.table-titles {
+  background: var(--dark-color);
+}
+.row-dark-color {
+  background: var(--dark-color);
+  opacity: 50%;
+}
+.row-primary-color {
+  background: var(--primary-color);
+}
+
+.border {
+  border-right: 2px solid var(--dark-color);
+  border-left: 2px solid var(--dark-color);
+}
+th {
+  padding: 1.5rem;
+  color: #ffffff;
+  font-size: 1.3em;
+}
+
+/*Border radius on all sides*/
+.bottom {
+  border-bottom-right-radius: 5px;
+}
+.top {
+  border-bottom-left-radius: 5px;
+}
+.rad_left {
+  border-top-left-radius: 5px;
+}
+.rad_right {
+  border-top-right-radius: 5px;
+}

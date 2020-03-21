@@ -1,0 +1,66 @@
+/* CSS COMMON FOR ALL PAGES */
+
+:root {
+  --background-color: #b2e8ff;
+  --light-color: #ffffff;
+  --dark-color: #145071;
+  --primary-color: #1683bf;
+  --border-color: #154560;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--dark-color);
+  font-family: "Fredoka One", cursive;
+  font-size: 36px;
+  height: 100vh;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 47px;
+  letter-spacing: 2px;
+}
+
+.btn {
+  color: var(--light-color);
+  background: var(--primary-color);
+  font-family: "Fredoka One", cursive;
+  font-size: 36px;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 5px;
+  height: 85px;
+}
+
+i {
+  font-size: 72px;
+}
+
+/* Scrolling in table */
+
+.table-scroll {
+  height: 100%;
+  overflow: auto;
+}
+
+.table-scroll table {
+  width: 100%;
+  text-align: center;
+  color: var(--light-color);
+}
+
+/* Grid for the whole page, common features */
+
+.grid-wrap {
+  max-width: 1050px;
+  max-height: 800px;
+  margin: 2rem auto 2rem;
+  display: grid;
+}

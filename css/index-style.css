@@ -1,98 +1,95 @@
-/* Whole site */
+/* Grid in washed hands and change user buttons */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.big-btn-grid {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  padding: 1.5em;
+  height: 100%;
 }
 
-
-:root {
---background-color: #B2E8FF;
---light-color: #FFFFFF;
---dark-color: #145071;
---primary-color: #1683BF;
---border-color: #154560;
+.big-btn-grid i {
+  font-size: 100px;
 }
 
-body {
-    font-family: 'Source Sans Pro', sans-serif;
-    background: var(--background-color);
-    color: var(--light-color);
+.bottom-of-button {
+  align-self: flex-end;
 }
-
-/* Main menu */
-
-#main-menu-index .container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    justify-items: center;
-}
-
-.hands-washed-btn {
-    width: 400px;
-    height: 400px;
-}
-
-.change-users-btn {
-    height: 400px;
-    width: 242px;
-}
-
-
-/* Options */
-
-#options .container {
-display: flex;
-flex-direction: column;
-align-items: center;
-}
-
-#options .button {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 130px;
-width: 130px;
-}
-
-/* Main Menu & Options Buttons */
-
-.button {
-    background: var(--primary-color);
-    color: var(--light-color);
-    border: none;
-    padding: 1rem;
-    margin: 1rem;
-}
-
 
 /* Table */
 
 .log {
-    height: 220px;
-    width: 770px;
-    text-align: center;
+  height: 220px;
+  width: 770px;
+  text-align: center;
 }
 
 .table-titles {
-    background: var(--dark-color);
-    padding: 20px 0 20px 0;
+  background: var(--dark-color);
+  padding: 20px 0 20px 0;
+  height: 1.7em;
 }
 
 .row-dark-color {
-    background: var(--dark-color);
-    opacity: 50%;
+  background: var(--dark-color);
+  opacity: 50%;
 }
 
 .row-primary-color {
-    background: var(--primary-color);
+  background: var(--primary-color);
 }
 
 table,
 th,
 td {
-    border-collapse: collapse;
-    border-right: 3px solid var(--border-color);
+  border-collapse: collapse;
+  border-right: 3px solid var(--border-color);
+  font-size: 30px;
+}
+
+/* Grid of the whole page */
+
+.grid-wrap {
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-areas:
+    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn ."
+    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn ."
+    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn yt-btn"
+    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn yt-btn"
+    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn log-btn"
+    "wash-table wash-table wash-table wash-table wash-table log-btn"
+    "wash-table wash-table wash-table wash-table wash-table settings-btn"
+    "wash-table wash-table wash-table wash-table wash-table settings-btn";
+  grid-gap: 4rem;
+  position: relative;
+}
+
+.hands-washed-btn {
+  grid-area: washed-hands-btn;
+}
+
+.change-users-btn {
+  grid-area: change-btn;
+}
+
+.yt-btn {
+  grid-area: yt-btn;
+}
+
+.log-btn {
+  grid-area: log-btn;
+}
+
+.setting-btn {
+  grid-area: settings-btn;
+}
+
+.btn {
+  height: 100%;
+  width: 100%;
+  /* all buttons on this page filling up their space in the grid */
+}
+
+.table-scroll {
+  grid-area: wash-table;
 }
