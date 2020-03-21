@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import * as R from 'ramda'
 
-import { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval } from '../redux/washLog'
+import { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval, purgeLog } from '../redux/washLog'
 
 moment.updateLocale('en', {
     relativeTime : {
@@ -113,7 +113,7 @@ class WashList extends Component {
     }
 
     render() {
-        let { log, users, reminderInterval } = this.props
+        let { log, users, reminderInterval, purgeLog } = this.props
         let interval = moment.duration(reminderInterval)
 
         return (
@@ -156,6 +156,7 @@ class WashList extends Component {
                 }
 
                 <button onClick={() => this.download()}>Download Log</button> 
+                <button onClick={() => purgeLog()}>PURGE LOG</button> 
                 <h2>Users</h2>
                 {
                     users.map(user => {
@@ -191,7 +192,8 @@ WashList.propTypes = {
     addUser: PropTypes.func,
     deleteUser: PropTypes.func,
     deleteEntry: PropTypes.func,
-    changeReminderInterval: PropTypes.func
+    changeReminderInterval: PropTypes.func,
+    purgeLog: PropTypes.func
 }
 
 export default connect(
@@ -200,5 +202,5 @@ export default connect(
         users: state.users,
         reminderInterval: state.reminderInterval,
     }),
-    { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval },
+    { addEntry, addUser, deleteUser, deleteEntry, changeReminderInterval, purgeLog },
 )(WashList)

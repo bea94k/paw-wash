@@ -12,6 +12,7 @@ const initialState = {
 const CREATE_USER = 'users/CREATE'
 const REMOVE_USER = 'users/DELETE'
 const ADD_LOG_ENTRY = 'log/CREATE'
+const PURGE_LOG = 'log/PURGE'
 const REMOVE_LOG_ENTRY = 'log/DELETE'
 const CHANGE_REMINDER_INTERVAL = 'reminderInterval/CHANGE'
 
@@ -42,6 +43,12 @@ export default (state = initialState, action) => {
         return {
             ...state,
             log: R.filter(entry => entry.id !== action.id, state.log) // filter out the id of the log entry for the given user
+        }
+
+    case PURGE_LOG:
+        return {
+            ...state,
+            log: []
         }
     
     case CHANGE_REMINDER_INTERVAL:
@@ -79,4 +86,8 @@ export const deleteEntry = (id) => ({
 export const changeReminderInterval = (newInterval) => ({
     type: CHANGE_REMINDER_INTERVAL,
     newInterval: newInterval
+})
+
+export const purgeLog = () => ({
+    type: PURGE_LOG
 })
