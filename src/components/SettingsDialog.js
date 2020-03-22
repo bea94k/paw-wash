@@ -9,6 +9,9 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import Slider from '@material-ui/core/Slider'
 import Button from '@material-ui/core/Button'
 import Snackbar from '@material-ui/core/Snackbar'
+import Tooltip from '@material-ui/core/Tooltip'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/styles'
 
 import { addUser, deleteUser, changeReminderInterval } from '../redux/washLog'
 
@@ -39,6 +42,16 @@ function valuetext(value) {
     return `${value}m`
 }
 
+const HtmlTooltip = withStyles(theme => ({
+    tooltip: {
+        backgroundColor: '#f5f5f9',
+        color: 'rgba(0, 0, 0, 0.87)',
+        maxWidth: 220,
+        fontSize: theme.typography.pxToRem(12),
+        border: '1px solid #dadde9',
+    },
+}))(Tooltip)
+
 class SettingsDialog extends Component {
     constructor(props) {
         super(props)
@@ -46,7 +59,8 @@ class SettingsDialog extends Component {
             open: false,
             username: '',
             deleteUser: '',
-            snackbarOpen: false
+            snackbarOpen: false,
+            toolTipOpen: false
         }
     }
 
@@ -85,11 +99,30 @@ class SettingsDialog extends Component {
     };
 
     render() {
+        if (this.props.users.length === 0 && !this.state.toolTipOpen) {
+            this.setState({ toolTipOpen: true })
+        }
+
+        if (this.props.users.length !== 0 && this.state.toolTipOpen) {
+            this.setState({ toolTipOpen: false })
+        }
+
         return (
             <React.Fragment>
-                <button className="btn setting-btn" onClick={this.handleClickOpen}>
-                    <i className="fas fa-cog"></i>
-                </button>
+                <HtmlTooltip
+                    title={
+                        <React.Fragment>
+                            <Typography color="inherit">No users yet</Typography>
+                            {'Add some users in the Settings'}
+                        </React.Fragment>
+                    }
+                    open={this.state.toolTipOpen}
+                >
+                    <button className="btn setting-btn" onClick={this.handleClickOpen}>
+                        <i className="fas fa-cog"></i>
+                    </button>
+                </HtmlTooltip>
+                
                 <Dialog
                     fullWidth={true}
                     maxWidth='lg'
@@ -144,7 +177,7 @@ class SettingsDialog extends Component {
                                     horizontal: 'center',
                                 }}
                                 open={this.state.snackbarOpen}
-                                autoHideDuration={6000}
+                                autoHideDuration={3000}
                                 onClose={this.handleSnackClose}
                                 message="User added"
                                 action={
