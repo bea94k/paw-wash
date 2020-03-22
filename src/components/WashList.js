@@ -65,6 +65,29 @@ class WashList extends Component {
         this.state.audio.addEventListener('ended', () => this.setState({ play: false }))
         setInterval(this.setNewTime, 5000) // call the new time regularly
     }
+
+    spaceFunction = (event) => {
+        if(event.keyCode === 32) {
+            event.preventDefault()
+            this.newWash(this.state.selectedUser)
+        }
+    }
+
+    rightArrowFunction = (event) => {
+        if(event.keyCode === 39) {
+            this.changeUser()
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keydown', this.spaceFunction, false)
+        document.addEventListener('keydown', this.rightArrowFunction, false)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('keydown', this.spaceFunction, false)
+        document.removeEventListener('keydown', this.rightArrowFunction, false)
+    }
     
     setNewTime = () => {
         this.setState({ now: moment() })
