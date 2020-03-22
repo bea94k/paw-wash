@@ -41,5 +41,6 @@ module.exports = {
           'error',
           'never'
       ]
-  }
+  },
+  'ignorePatterns': ['build/', 'node_modules/']
 }
