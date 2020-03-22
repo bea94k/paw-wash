@@ -189,7 +189,7 @@ class WashList extends Component {
                     onRef={ref => (this.n = ref)} // Required
                     title="PaWash Reminder" // Required
                     body={'Time to wash hands!'}
-                    icon="/logo192.png"
+                    icon="./assets/slider-thumb.png"
                     tag="hands"
                     timeout="5000"
                     onClick={(event) => this.handleClick(event)}
