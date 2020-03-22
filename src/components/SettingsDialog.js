@@ -64,6 +64,20 @@ class SettingsDialog extends Component {
         }
     }
 
+    enterFunction = (event) => {
+        if(event.keyCode === 13) {
+            this.handleNewUser()
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keydown', this.enterFunction, false)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('keydown', this.enterFunction, false)
+    }
+
     handleClickOpen = () => {
         this.setState({open: true})
     }
@@ -73,8 +87,10 @@ class SettingsDialog extends Component {
     }
 
     handleNewUser() {
-        this.props.addUser(this.state.username)
-        this.setState({username: '', snackbarOpen: true})
+        if (this.state.username.trim().length !== 0) {
+            this.props.addUser(this.state.username)
+            this.setState({username: '', snackbarOpen: true})
+        }
     }
 
     handleDelete() {
