@@ -31,7 +31,10 @@ class LogDialog extends Component {
 
     download() {
         let { log } = this.props
-        let trimmedLog = log.map(entry => R.pick(['username', 'time'], entry))
+        let trimmedLog = R.map(entry => {
+            entry.dateTime = moment(entry.time).format('DD.MM.YYYY HH:mm:ss')
+            return R.pick(['username', 'dateTime'], entry)
+        }, log)
         fileDownload(papa.unparse(trimmedLog), moment().format('YYYY-MM-DD') + '-wash-log.csv')
     }
 
