@@ -111,7 +111,7 @@ i {
 
 .grid-wrap {
   max-width: 80vw;
-  height: 90vh;
+  max-height: 90vh;
   margin: 2rem auto 2rem;
   display: grid;
 }

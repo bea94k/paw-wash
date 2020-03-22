@@ -60,6 +60,7 @@ td {
     "wash-table wash-table wash-table wash-table wash-table settings-btn";
   grid-gap: 2rem;
   position: relative;
+  height: 90vh;
 }
 
 .hands-washed-btn {
