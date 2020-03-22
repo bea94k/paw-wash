@@ -140,7 +140,7 @@ class WashList extends Component {
                     </div>
                 </button>
 
-                <img className='logo grid-center' src='/assets/slider-thumb.svg' />
+                <img alt='PaWash Logo' className='logo grid-center' src='/assets/slider-thumb.svg' />
 
                 <button className="btn yt-btn">
                     <i className="fab fa-youtube"></i>
