@@ -89,7 +89,8 @@ class WashList extends Component {
     }
 
     newWash(userIndex) {
-        this.props.addEntry(userIndex)
+        if (this.props.users.length !== 0)
+            this.props.addEntry(userIndex)
     }
 
     download() {
