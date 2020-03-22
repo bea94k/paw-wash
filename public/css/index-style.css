@@ -51,7 +51,7 @@ td {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(7, 1fr);
   grid-template-areas:
-    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn ."
+    "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn logo"
     "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn yt-btn"
     "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn yt-btn"
     "washed-hands-btn washed-hands-btn washed-hands-btn change-btn change-btn log-btn"
@@ -90,4 +90,9 @@ td {
 
 .table-scroll {
   grid-area: wash-table;
+}
+
+.logo {
+  grid-area: logo;
+  height: 150%;
 }
