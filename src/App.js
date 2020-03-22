@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import withSplashScreen from './withSplashScreen'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 import WashList from './components/WashList'
@@ -22,4 +23,4 @@ function App() {
     )
 }
 
-export default App
+export default withSplashScreen(App)
