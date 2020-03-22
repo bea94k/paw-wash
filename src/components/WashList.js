@@ -118,6 +118,10 @@ class WashList extends Component {
         }
     }
 
+    openVideo() {
+        window.open('https://www.youtube.com/watch?v=3PmVJQUCm4E','_blank')
+    }
+
     render() {
         let { log, users, reminderInterval } = this.props
         let interval = moment.duration(reminderInterval)
@@ -142,7 +146,7 @@ class WashList extends Component {
 
                 <img alt='PaWash Logo' className='logo grid-center' src='/assets/slider-thumb.svg' />
 
-                <button className="btn yt-btn">
+                <button className="btn yt-btn" onClick={() => this.openVideo()}>
                     <i className="fab fa-youtube"></i>
                 </button>
 
