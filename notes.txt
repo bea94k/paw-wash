@@ -1,10 +1,16 @@
-font: Source Sans Pro
+font: Fredoka One
+
 hand wash icon:
 	https://fontawesome.com/icons/sign-language?style=solid
-	or
-	https://www.iconfinder.com/iconsets/hand-washing?utm_campaign=Virus%20awareness&utm_medium=landing%20page&utm_source=Webflow&utm_content=Hand%20washing%20by%20Siwat%20V  (with credit!)
 change worker icon: https://fontawesome.com/icons/sync-alt?style=solid
 youtube icon: https://fontawesome.com/icons/youtube?style=brands
 settings icon: https://fontawesome.com/icons/cog?style=solid
 log icon: https://fontawesome.com/icons/clipboard-list?style=solid
 close-cross icon: https://fontawesome.com/icons/times?style=solid
+
+COLORS
+--background-color: #B2E8FF
+--light-color: #FFFFFF
+--dark-color: #145071
+--primary-color: #1683BF
+(the darker row in tables is --dark with opacity)
