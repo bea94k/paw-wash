@@ -1,5 +1,6 @@
-# paw-wash
-Hack the Crisis Finland - hand wash app
+# PaWash - a web app gamifying the habit of washing hands
+Created during Hack the Crisis Finland online hackathon (20-22.3.2020) to help fight against the COVID-19 pandemic, the app is aimed mostly for restaurant workers and children to remind about washing hands regularly. The users can log when exactly they washed their hands, the surpervisors can easily download the full log with one click, and the reminder interval can be set from 5 to 60 minutes. With the basic functionalities already up and running, more features are coming, eg. adding a theme of cats to make it fun for children, developing points/stars system to gamify the habit and keep the motivation up.
+Demo: https://vimeo.com/399603685
 
 # React App
 ## Available Scripts
