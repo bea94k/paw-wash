@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "js-file-download": "^0.4.10",
     "moment": "^2.24.0",
-    "papaparse": "^5.1.1",
+    "papaparse": "^5.2.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.27.0",
     "react": "^16.13.1",
